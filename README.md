@@ -31,3 +31,10 @@ https://e0b75de1-90c7-4c11-9d12-a8bc84c4d081.bspapp.com/http/jjskyline?uid=你�
 
 如果你喜欢本项目，欢迎 `star`
 
+如何获取 CSDN 文章数据
+直接拿到浏览器打开，如果文章多的话可以更改 `size`对应的值，获取到json后，下载既可
+由于和掘金数据字段不一样，这里还没有实现
+
+```shell
+https://blog.csdn.net/community/home-api/v1/get-business-list?page=1&size=150&businessType=blog&orderby=&noMore=false&year=2021&month=&username=你的CSDNid
+```

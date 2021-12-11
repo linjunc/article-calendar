@@ -3,46 +3,34 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import ReactTooltip from 'react-tooltip';
 import 'react-calendar-heatmap/dist/styles.css';
 import './styles.css'
-import data from '../../assets/article.json'
+import data from '../../assets/article-csdn.json'
 import dayjs from 'dayjs';
 
-interface ValueList {
-    date: Date,
-    count: number,
-    article: string,
-    digg_count: number,
-    view_count: number,
-    ctime: number,
-    time: string
-}
+
 interface ShowList {
     date: string,
     count: number,
-    title: ValueList[]
+    title: any
 }
 
-const JueJin: React.FC = () => {
+const Csdn: React.FC = () => {
     const today = new Date();
-    const allArticle = [] as ValueList[]
-    // 把数据合并
-    for (const i in data) {
-        allArticle.push(...data[i] as [])
-    }
-    // 根据时间排序，无所谓
-    allArticle.sort((a, b) => a.ctime - b.ctime)
-    // 添加 time 字段，记录发布的时间
-    allArticle.map(item => item.time = dayjs.unix(item.ctime).format('YYYY-MM-DD'))
+    const allArticle = data
+
+    // 处理时间
+    allArticle.map(item => item.postTime = item.postTime.slice(0, 10))
     // 处理日期和发文数量
     const articleMap = new Map()
     // 建立日期和数量映射
     allArticle.forEach(item => {
         // 有这一天就+1，没有就是 1 
-        articleMap.has(item.time) ? articleMap.set(item.time, articleMap.get(item.time) + 1) : articleMap.set(item.time, 1)
+        articleMap.has(item.postTime) ? articleMap.set(item.postTime, articleMap.get(item.postTime) + 1) : articleMap.set(item.postTime, 1)
     })
+
     // 建立渲染数据格式 {date: ,count: , title: [{}, {}]}
     let showData = [] as ShowList[]
     for (let [k, v] of articleMap) {
-        const titleList = allArticle.filter(item => item.time === k)
+        const titleList = allArticle.filter(item => item.postTime === k)
         showData = [...showData, { date: k, count: v, title: titleList }]
     }
 
@@ -69,7 +57,7 @@ const JueJin: React.FC = () => {
 
     return (
         <div style={{ width: "1400px", height: "400px" }}>
-            <h2 style={{ marginBottom: "40px", textAlign: "center" }}> 2021 掘金发文记录</h2>
+            <h2 style={{ marginBottom: "40px", textAlign: "center" }}> 2021 CSDN 发文记录</h2>
             <h4 style={{ marginBottom: "40px", textAlign: "center" }}>总共发文 {allArticle.length} 篇 </h4>
             <CalendarHeatmap
                 startDate={new Date('2021-01-01')}
@@ -80,7 +68,7 @@ const JueJin: React.FC = () => {
                         return 'color-empty';
                     }
                     // 大于4篇显示4篇的颜色
-                    return `color-github-${value.count > 4 ? 4 : value.count}`;
+                    return `color-gitlab-${value.count > 4 ? 4 : value.count}`;
                 }}
                 tooltipDataAttrs={(value) => {
                     console.log(value.title);
@@ -98,4 +86,4 @@ const JueJin: React.FC = () => {
     );
 };
 
-export default JueJin;
+export default Csdn;
