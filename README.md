@@ -1,6 +1,9 @@
 <h2 align="center">👋 欢迎访问我的 article-calendar 仓库</h2>
+<h4 align="center">联系我</h4>
+<p align="center"><img src="https://img.shields.io/badge/weChat-Ljc--10c-blue" alt="juejin"></p>
+<h4><p align="center">💖 大二 @GDUT 💞 前端 💟 Base: 广州</p></h4>
+<h5><p align="center"><i>本项目基于 react-calendar-heatmap 开源项目而制作</i></p></h5>
 
-本项目基于 `react-calendar-heatmap` 开源项目而制作
 # 本项目最终呈现效果
 
 ![小丞同学](./src/assets/test.png)
