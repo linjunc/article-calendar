@@ -3,7 +3,7 @@
 本项目基于 `react-calendar-heatmap` 开源项目而制作
 # 本项目最终呈现效果
 
-![image-20211211223703707](https://ljcimg.oss-cn-beijing.aliyuncs.com/imgs/image-20211211223703707.png)
+![小丞同学](./src/assets/test.png)
 
 ## 如何使用本项目
 
