@@ -6,7 +6,7 @@
 
 # 本项目最终呈现效果
 
-![小丞同学](./src/assets/test.png)
+![小丞同学](./src/assets/juejin-csdn.png)
 
 ## 如何使用本项目
 
