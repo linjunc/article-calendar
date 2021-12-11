@@ -33,7 +33,22 @@ https://e0b75de1-90c7-4c11-9d12-a8bc84c4d081.bspapp.com/http/jjskyline?uid=你�
 
 如何获取 CSDN 文章数据
 直接拿到浏览器打开，如果文章多的话可以更改 `size`对应的值，获取到json后，下载既可
-由于和掘金数据字段不一样，这里还没有实现
+
+下载完成后，将 json 替换 `assets/article-csdn.json` 文件，即可
+需要注意的是拿到的 `json` 是 下面这个格式，只需要把 list 字段对应的数组复制即可
+特别注意：CSDN 一次最多返回 100 条数据，因此如果超过100篇，可以将 `page` 改成 2，将获取到的 `list` 数组，加到 `json` 文件中
+```json
+    {
+        "code":200,
+        "message":"success",
+        "data":{
+            "list": [
+                {},
+                {}
+            ]
+        }
+    }
+```
 
 ```shell
 https://blog.csdn.net/community/home-api/v1/get-business-list?page=1&size=150&businessType=blog&orderby=&noMore=false&year=2021&month=&username=你的CSDNid
